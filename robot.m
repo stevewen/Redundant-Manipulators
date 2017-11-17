@@ -1,4 +1,4 @@
-%% |*实现末端椭圆轨迹运动*|
+%% **实现末端椭圆轨迹运动**
 
 %% step1.建立7自由度冗余机械臂模型
 %
@@ -23,6 +23,7 @@ robot.display();    %显示参数表
 
 init_ang0=[0 90 0 0 0 0 0]/180*pi;
 q=init_ang0;
+
 %% step2.圆形轨迹
 %
 delete IXT.txt IYT.txt
@@ -46,6 +47,7 @@ T=zeros(4,4,N);
 for ii=1:N
     T(:,:,ii)=[[1;0;0] [0;0;1] [0;1;0] [xt(ii);yt(ii);zt(ii)];[0 0 0 1]];
 end
+
 %% step.3各个轨迹点反解关节角
 %
 M=10; 
@@ -60,6 +62,7 @@ for ii=1:N
         q0(ii,:)=TH(Phi,:);
     end    
 end
+
 %% step.4关节角空间规划
 %
 figure(2);set(gcf,'outerposition',get(0,'screensize'));
